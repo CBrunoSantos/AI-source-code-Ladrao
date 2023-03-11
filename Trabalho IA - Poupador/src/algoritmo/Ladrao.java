@@ -11,14 +11,31 @@ public class Ladrao extends ProgramaLadrao {
 	//Tentativas de seguir um padrão
 	public int[] padroes = new int[5];
 	
+	public int moveUp = 1;
+	public int moveDown = 2;
+	public int moveRigth = 3;
+	public int moveLeft = 4;	
+	
 	Point posicaoAtual; 
 	public int acao() {
+		int[] posPoup = sensor.getVisaoIdentificacao();
+		for(int pp : posPoup) {
+			if(pp == Constantes.numeroPoupador01 ||  pp == Constantes.numeroPoupador02) {
+//				int x = (int) (Math.random() * 5);
+				System.out.println("encontrei o safado");
+//				return perseguir(moveRigth);
+			}
+		}
 		posicaoAtual = sensor.getPosicao();
 		mapaIndividual[posicaoAtual.x][posicaoAtual.y]++;
 		
 		int escolha = escolhaSimples();
 		return escolha;
 	}
+	
+	public int perseguir(int move) {
+		return move;	
+}
 	public int escolhaSimples() {
 		//startando com valores que não existem
 		int codigoDoPiso = -3;
